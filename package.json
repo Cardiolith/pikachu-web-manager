@@ -28,9 +28,15 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@loadable/component": "^5.15.2",
+    "@uiw/react-md-editor": "^3.19.1",
     "antd": "^4.23.0",
+    "axios": "^0.27.2",
+    "cherry-markdown": "^0.8.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0"
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.4.2",
+    "redux": "^4.2.0"
   }
 }

@@ -6,7 +6,8 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, "./dist")
+        path: path.resolve(__dirname, "./dist"),
+        publicPath: '/'
     },
 
     resolve: {
@@ -74,11 +75,34 @@ module.exports = {
                 test: /\.(png|jpe?g|gif)/i,
                 use: [
                     {
-                        loader: "file-loader"
-                    }
+                        loader: "file-loader",
+                        options: {
+                            name: '[path][name].[ext]'
+                        }
+                    },
                 ]
             }
         ]
+    },
+
+    devServer: {
+        historyApiFallback: true,
+        port: 8081,
+        proxy: {
+            '/api': {
+                target: "http://localhost:8080/",
+                changeOrigin: true,
+                bypass: function (req, res, proxyOptions) {
+                    if (req.headers.accept.indexOf('html') != -1) {
+                        console.log(req.originalUrl);
+
+                        return req.originalUrl;
+                    }
+                },
+                pathRewrite: { '^/api': '' },
+                autoRewrite: true
+            }
+        }
     },
 
     plugins: [
