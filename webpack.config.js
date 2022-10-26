@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const { getThemeVariables } = require('antd/dist/theme');
+const aliyunTheme = require('@ant-design/aliyun-theme');
 
 module.exports = {
     entry: "./src/index.js",
@@ -39,7 +40,7 @@ module.exports = {
                         options: {
                             lessOptions: {
                                 javascriptEnabled: true,
-                                modifyVars: getThemeVariables({ dark: true })
+                                modifyVars:  aliyunTheme//getThemeVariables({ dark: true, compact: true }),
                             }
                         }
                     }
@@ -107,7 +108,8 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: "index.html"
+            template: "index.html",
+            favicon: './public/icons/pikachu.png'
         })
     ]
 }

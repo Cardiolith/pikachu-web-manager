@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import PikaLayout from "./components/layout";
-import Login from "./components/login";
+import Login from "./pages/login";
 import loadable from "@loadable/component";
 import routes from "../config/routes";
+import Homepage from "./pages/Homepage";
 
 const loadComponent = component => loadable(() => import(`${component}`));      // loadable 库动态加载组件
 const loadSubRoute = route => {
@@ -31,7 +31,7 @@ export default function App() {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Navigate to="dashboard/analysis" />} />
-            <Route path="/" element={<PikaLayout />} >
+            <Route path="/" element={<Homepage />} >
                 {routesArr.map((r, index) => (<Route key={r.path} path={r.path} element={r.element} />))}
             </Route>
         </Routes>

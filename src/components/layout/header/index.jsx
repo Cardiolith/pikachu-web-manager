@@ -1,33 +1,39 @@
 import React from 'react';
-import { Row, Col, Space, Button } from 'antd';
-import { MenuFoldOutlined, MenuUnfoldOutlined, SearchOutlined, QuestionOutlined } from '@ant-design/icons';
+import { Space, Avatar, Layout, Tooltip } from 'antd';
+import { SearchOutlined, QuestionOutlined } from '@ant-design/icons';
 import './index.less';
+import Logo from '../../../../public/icons/pikachu.png'
 import UserSpan from './UserSpan';
-class PikaHeader extends React.Component {
+import { Link } from 'react-router-dom';
 
-    constructor(props) {
-        super(props);
-    }
+export default function Header({ }) {
 
-    render() {
-
-        const { siderCollapsed, toggleSiderCollapsed } = this.props;
-
-        return (
-            <div className='pika-header'>
-                <Button onClick={toggleSiderCollapsed}>
-                    {siderCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                </Button>
-                <div className='content'>
-                    <Space size="large" wrap>
-                        <SearchOutlined />
-                        <QuestionOutlined />
-                        <UserSpan />
+    return (
+        <Layout.Header className='pika-header'>
+            <div className='header-logo'>
+                <Link to="/">
+                    <Space
+                        size="middle">
+                        <Avatar
+                            src={Logo} />
+                        <span style={{ paddingTop: "1px" }}>Pikachu</span>
                     </Space>
-                </div>
+                </Link>
             </div>
-        )
-    }
-}
+            <div style={{ flex: '1 1 0%' }}>
+            </div>
+            <div className='header-items'>
+                <Space
+                    size="middle"
+                    wrap>
+                    <SearchOutlined />
+                    <Tooltip title="查看帮助">
 
-export default PikaHeader;
+                        <QuestionOutlined />
+                    </Tooltip>
+                    <UserSpan />
+                </Space>
+            </div>
+        </Layout.Header>
+    );
+}

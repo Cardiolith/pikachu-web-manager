@@ -6,7 +6,7 @@ import './index.less';
 import { LockOutlined, UserOutlined, GithubOutlined, WeiboCircleOutlined } from "@ant-design/icons";
 import Logo from '../../../public/icons/pikachu.png';
 import { UserService } from "../../services/user/user";
-import { useAuth } from './../../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 
 function Login(props) {
     const [username, setUsername] = useState("");

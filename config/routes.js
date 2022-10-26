@@ -49,6 +49,14 @@ export default [
         ]
     },
     {
+        path: 'cms/post/writer',
+        component: './components/post/editor'
+    },
+    {
+        path: 'cms/post/:id/writer',
+        component: './components/post/editor'
+    },
+    {
         path: '*',
         component: './pages/404'
     }
